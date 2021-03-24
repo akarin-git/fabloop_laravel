@@ -51,6 +51,7 @@ class LocalDevelopSeeder extends Seeder
         
         
         factory(\App\Eloquents\User::class, 10)->create();
-        
+
+        \Artisan::call('passport:client --password');
     }
 }

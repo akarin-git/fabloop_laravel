@@ -23,12 +23,18 @@ Route::post('/user/signup','Api\SignupController@userSignup')->name('api.userSig
 Route::post('/shop/signup','Api\SignupController@shopSignup')->name('api.shopSignup.post');
 
 
-// Route::post('/signup', function (Request $request) {
-//     // とりあえず、ベタ書きでレスポンスする
-//     // レスポンスの形をswaggerと合わせる
-//     return response()->json([
-//         'id' => 1,
-//         'nickname' => 'ニックネーム',
-//         'email' => 'test@example.com',
-//     ]);
-// });
+// 認証
+Route::middleware('auth:api')->group(function () {
+
+    // ショップ認証
+    Route::middleware(['auth','can:isShop'])->group(function(){
+    });
+    
+    // 投稿
+    Route::post('/image','Api\PostImageController@store')->name('api.post_image.upload');
+    // 投稿一覧
+    Route::get('/image/show','Api\PostImageController@show')->name('api.post_image.upload');
+    // ログアウト
+    Route::get('/logout','Api\SignupController@logout')->name('api.logout.get');
+    
+    });

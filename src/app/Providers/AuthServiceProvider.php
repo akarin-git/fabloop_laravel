@@ -26,6 +26,12 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // shop認証
+        Gate::define('isShop',function($user){
+            // dd($user->role == 1);
+            return $user->role == 2;
+        });
+        
         // 不要なURIを使わない（パスワードグラントのみ利用）
         Passport::routes(function ($router) {
                 $router->forAccessTokens();
