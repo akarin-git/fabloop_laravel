@@ -52,13 +52,25 @@ class EloquentTest extends TestCase
       /**
      * @test
      */
-    public function RecipeIDを指定して投稿を取得()
+    public function Favorite投稿を取得()
     {
-        $recipe = \App\Eloquents\Recipe::find(1);
+        $post = \App\Eloquents\PostImage::find(1);
 
-        $relation = $recipe->post_image;
+        $relation = $post->favorite;
         dd($relation);
 
         $this->assertTrue(true);
     }
+    //   /**
+    //  * @test
+    //  */
+    // public function RecipeIDを指定して投稿を取得()
+    // {
+    //     $recipe = \App\Eloquents\Recipe::find(1);
+
+    //     $relation = $recipe->post_image;
+    //     dd($relation);
+
+    //     $this->assertTrue(true);
+    // }
 }

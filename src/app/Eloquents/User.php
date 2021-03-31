@@ -25,4 +25,8 @@ class User extends Authenticatable
             {
                 return $this->hasMany(\App\Eloquents\PostImage::class,'user_id','id');
             }
+       public function favorite()
+            {
+                return $this->belongsToMany(\App\Eloquents\PostImage::class,'user_id','id');
+            }
 }

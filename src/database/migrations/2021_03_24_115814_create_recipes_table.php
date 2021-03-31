@@ -14,7 +14,7 @@ class CreateRecipesTable extends Migration
     public function up()
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('post_id')->unique()->comment('投稿ID');
             $table->string('material_one',100)->comment('材料1');
             $table->string('material_twe',100)->nullable()->comment('材料2');

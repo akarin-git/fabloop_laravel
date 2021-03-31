@@ -75,4 +75,38 @@ class PostImageController extends Controller
             // dd($showImage);
         return response()->json($showImage);
     }
+
+
+    // 投稿個別ページ
+    public function showId(Request $request,int $id)
+    {
+
+        $post = PostImage::find($id);
+        // dd($id);
+        return response()->json($post);
+    }
+
+
+
+    // 自分の投稿一覧 myPage
+    public function showtest(Request $request)
+    {
+        // $myId = $request->user()->id;
+        // $showImage = PostImage::all();
+        $showImage = PostImage::all();
+        
+        // dd($showImage);
+            // dd($showImage);
+        return response()->json($showImage);
+    }
+
+
+    // 自分の投稿一覧 myPage
+    public function showtestId(Request $request,int $id)
+    {
+
+        $post = PostImage::find($id);
+        // dd($id);
+        return response()->json($post);
+    }
 }

@@ -22,4 +22,11 @@ class PostImage extends Model
     {
         return $this->hasOne(\App\Eloquents\Recipe::class,'post_id','id');
     }
+
+    public function favorite()
+    {
+           return $this->hasMany(\App\Eloquents\Favorite::class,'post_id','id');
+    }
+
+   
 }

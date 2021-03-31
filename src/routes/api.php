@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// テスト
+Route::get('/image/showtest/{id}','Api\PostImageController@showtestId')->name('api.post_image.show');
+Route::get('/image/showtest','Api\PostImageController@showtest')->name('api.post_image.show');
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -23,17 +29,24 @@ Route::post('/user/signup','Api\SignupController@userSignup')->name('api.userSig
 Route::post('/shop/signup','Api\SignupController@shopSignup')->name('api.shopSignup.post');
 
 
+// ショップ認証
+Route::middleware(['auth','can:isShop'])->group(function(){
+});
 // 認証
 Route::middleware('auth:api')->group(function () {
-
-    // ショップ認証
-    Route::middleware(['auth','can:isShop'])->group(function(){
-    });
     
     // 投稿
     Route::post('/image','Api\PostImageController@store')->name('api.post_image.upload');
     // 投稿一覧
-    Route::get('/image/show','Api\PostImageController@show')->name('api.post_image.upload');
+    Route::get('/image/show','Api\PostImageController@show')->name('api.post_image.show');
+    // 投稿個別
+    Route::get('/image/show/{id}','Api\PostImageController@showId')->name('api.post_image.show');
+    // お気に入り
+    Route::post('/image/{id}/favorite','Api\FavoriteController@store')->name('api.favorite.store');
+    // お気に入り削除
+    Route::post('/image/{id}/unfavorite','Api\FavoriteController@delete')->name('api.favorite.delete');
+    // お気に入り一覧
+    Route::get('/myfavorite','Api\FavoriteController@myfavorite')->name('api.favorite.myfavorite');
     // ログアウト
     Route::get('/logout','Api\SignupController@logout')->name('api.logout.get');
     

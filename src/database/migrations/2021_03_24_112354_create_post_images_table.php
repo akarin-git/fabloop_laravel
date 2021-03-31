@@ -14,11 +14,14 @@ class CreatePostImagesTable extends Migration
     public function up()
     {
         Schema::create('post_images', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('user_id')->comment('投稿ユーザーID');
             $table->string('category',200)->collate('utf8mb4_general_ci')->comment('カテゴリー');
             $table->string('title',200)->collate('utf8mb4_general_ci')->comment('タイトル');
-            $table->longText('description')->collate('utf8mb4_general_ci')->comment('説明');
+            $table->longText('description_one')->collate('utf8mb4_general_ci')->comment('説明1');
+            $table->longText('description_twe')->collate('utf8mb4_general_ci')->nullable()->comment('説明2');
+            $table->longText('description_three')->collate('utf8mb4_general_ci')->nullable()->comment('説明3');
+            $table->longText('description_four')->collate('utf8mb4_general_ci')->nullable()->comment('説明4');
             $table->string('image_path',200)->comment('画像');
             $table->string('public_id',200)->comment('パブリックID');
             $table->string('web_page',200)->nullable()->comment('WEBページ');
