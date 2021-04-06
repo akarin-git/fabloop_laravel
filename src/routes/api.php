@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/image/showall','Api\PostImageController@showall')->name('api.post_image.showall');
 // テスト
-Route::get('/image/showtest/{id}','Api\PostImageController@showtestId')->name('api.post_image.show');
-Route::get('/image/showtest','Api\PostImageController@showtest')->name('api.post_image.show');
+Route::get('/image/showtest/{id}','Api\PostImageController@showtestId')->name('api.post_image.showtest');
 
+// 投稿個別
+Route::get('/image/show/{id}','Api\PostImageController@showId')->name('api.post_image.showId');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -29,18 +31,20 @@ Route::post('/user/signup','Api\SignupController@userSignup')->name('api.userSig
 Route::post('/shop/signup','Api\SignupController@shopSignup')->name('api.shopSignup.post');
 
 
+
+
+// カテゴリ別
+Route::get('/image/{category}','Api\PostImageController@showCategory')->name('api.post_image.showCategory');
+
 // ショップ認証
 Route::middleware(['auth','can:isShop'])->group(function(){
 });
 // 認証
 Route::middleware('auth:api')->group(function () {
     
+    Route::get('me','Api\SignupController@me')->name('api.me.get');
     // 投稿
     Route::post('/image','Api\PostImageController@store')->name('api.post_image.upload');
-    // 投稿一覧
-    Route::get('/image/show','Api\PostImageController@show')->name('api.post_image.show');
-    // 投稿個別
-    Route::get('/image/show/{id}','Api\PostImageController@showId')->name('api.post_image.show');
     // お気に入り
     Route::post('/image/{id}/favorite','Api\FavoriteController@store')->name('api.favorite.store');
     // お気に入り削除
@@ -50,4 +54,4 @@ Route::middleware('auth:api')->group(function () {
     // ログアウト
     Route::get('/logout','Api\SignupController@logout')->name('api.logout.get');
     
-    });
+});

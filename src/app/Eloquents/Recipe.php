@@ -17,8 +17,8 @@ class Recipe extends Model
         'goods_one','goods_twe','goods_three','goods_four','goods_five',
     ];
 
-    public function post_image()
-    {
-        return $this->hasOne(\App\Eloquents\PostImage::class,'id','post_id');
-    }
+    // public function post_image()
+    // {
+    //     return $this->hasOne(\App\Eloquents\PostImage::class,'id','post_id');
+    // }
 }

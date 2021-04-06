@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Eloquents\User;
 
 class SignupController extends Controller
 {
@@ -39,4 +40,18 @@ class SignupController extends Controller
 
         return response()->json([$stored]);
    }
+
+   public function me(Request $request)
+    {
+        $myId = $request->user()->id;
+        
+        $myInfo = User::find($myId);
+        // $myInfo = User::with(['favorite'])->find($myId);
+        // dd($myInfo);
+
+       // とりあえず、そのままレスポンスします（後ほど整形します）
+        // return response()->json($myInfo);
+        return response()->json([$myInfo]);
+    }
 }
+
