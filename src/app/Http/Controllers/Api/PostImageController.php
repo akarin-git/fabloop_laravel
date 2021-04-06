@@ -20,17 +20,17 @@ class PostImageController extends Controller
             // dd($request->user());
           
             // dd($myId);
-            // $Upload = new PostImage();
-            // $img = $request->file('image')->getRealPath();
-            // // cloudinaryにアップロードされた画像の名前を取得
-            //     Cloudder::upload($img,null);
-            // // cloudinaryにアップロードされた画像の名前を取得
-            // $publicId = Cloudder::getPublicId();
-            // $logoUrl = Cloudder::secureShow($publicId,[
-            //     // 保存の際の画像の幅と高さを指定
-            //     'width' => 400,
-            //     'height' => 300,
-            //     ]);
+            $Upload = new PostImage();
+            $img = $request->file('image')->getRealPath();
+            // cloudinaryにアップロードされた画像の名前を取得
+                Cloudder::upload($img,null);
+            // cloudinaryにアップロードされた画像の名前を取得
+            $publicId = Cloudder::getPublicId();
+            $logoUrl = Cloudder::secureShow($publicId,[
+                // 保存の際の画像の幅と高さを指定
+                'width' => 400,
+                'height' => 300,
+                ]);
                 
             $Upload = \App\Eloquents\PostImage::create([
                 'user_id' => $request->user()->id,
@@ -40,8 +40,8 @@ class PostImageController extends Controller
                 'descriptionB' => $request->input('descriptionB'),
                 'descriptionC' => $request->input('descriptionC'),
                 'web_page' => $request->input('web_page'),
-                // 'image_path' => $logoUrl,
-                // 'public_id' => $publicId,
+                'image_path' => $logoUrl,
+                'public_id' => $publicId,
                 'materialA' => $request->input('materialA'),
                 'materialB' => $request->input('materialB'),
                 'materialC' => $request->input('materialC'),

@@ -11,6 +11,8 @@ class LocalDevelopSeeder extends Seeder
      */
     public function run()
     {
+
+        \Artisan::call('passport:client --password');
          // ユーザー１名
          \App\Eloquents\User::create([
             'role' => 1,
@@ -21,16 +23,16 @@ class LocalDevelopSeeder extends Seeder
         ]);
 
         // 投稿にレシピが紐づいている１件
-        factory(\App\Eloquents\PostImage::class,3)
-        ->create([
-            'user_id' => 1,
-            'category' => 'handmade',
-        ]);
-        factory(\App\Eloquents\PostImage::class,3)
-        ->create([
-            'user_id' => 2,
-            'category' => 'craft',
-        ]);
+        // factory(\App\Eloquents\PostImage::class,3)
+        // ->create([
+        //     'user_id' => 1,
+        //     'category' => 'handmade',
+        // ]);
+        // factory(\App\Eloquents\PostImage::class,3)
+        // ->create([
+        //     'user_id' => 2,
+        //     'category' => 'craft',
+        // ]);
         // ->each(function($post){
         //     \App\Eloquents\Favorite::create([
         //         'user_id' => $post->user_id,
@@ -72,6 +74,6 @@ class LocalDevelopSeeder extends Seeder
         
         // factory(\App\Eloquents\User::class, 10)->create();
 
-        \Artisan::call('passport:client --password');
+        
     }
 }
