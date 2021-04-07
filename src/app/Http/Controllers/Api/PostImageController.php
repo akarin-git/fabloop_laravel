@@ -19,9 +19,10 @@ class PostImageController extends Controller
         $newImage = \DB::transaction(function() use ($request){
             // dd($request->user());
           
-            // dd($myId);
             $Upload = new PostImage();
-            $img = $request->file('image')->getRealPath();
+            $img = $request->file('image_path')->getRealPath();
+            // $img = $request->file();
+            // dd($img);
             // cloudinaryにアップロードされた画像の名前を取得
                 Cloudder::upload($img,null);
             // cloudinaryにアップロードされた画像の名前を取得

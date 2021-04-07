@@ -58,18 +58,18 @@ class LocalDevelopSeeder extends Seeder
         
 
         // お気に入り
-        \App\Eloquents\Favorite::create([
-            'user_id' => 1,
-            'post_id' => 1,
-        ]);
-        \App\Eloquents\Favorite::create([
-            'user_id' => 2,
-            'post_id' => 1,
-        ]);
-        \App\Eloquents\Favorite::create([
-            'user_id' => 2,
-            'post_id' => 2,
-        ]);
+        // \App\Eloquents\Favorite::create([
+        //     'user_id' => 1,
+        //     'post_id' => 1,
+        // ]);
+        // \App\Eloquents\Favorite::create([
+        //     'user_id' => 2,
+        //     'post_id' => 1,
+        // ]);
+        // \App\Eloquents\Favorite::create([
+        //     'user_id' => 2,
+        //     'post_id' => 2,
+        // ]);
         
         
         // factory(\App\Eloquents\User::class, 10)->create();
