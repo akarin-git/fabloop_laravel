@@ -12,7 +12,7 @@ class UserController extends Controller
     // user一覧 
     public function userall(Request $request)
     {
-        dd($request);
+        // dd($request);
         // $myId = $request->user()->id;
         // $showImage = PostImage::all();
         
@@ -21,7 +21,7 @@ class UserController extends Controller
                                 ->get();
         // $showImage = PostImage::all();
         
-        dd($userall);
+        // dd($userall);
           
         return response()->json($userall);
         // return new \App\Http\Resources\PostImageCollection($showImage);
