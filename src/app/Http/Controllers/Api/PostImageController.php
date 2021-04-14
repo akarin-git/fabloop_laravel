@@ -15,7 +15,7 @@ class PostImageController extends Controller
     // public function store(PostImage $request)
     public function store(Request $request)
     {
-        // dd($request->file('image_path')->getRealPath());
+        dd($request);
         $newImage = \DB::transaction(function() use ($request){
             // dd($request->user());
           
@@ -103,10 +103,11 @@ class PostImageController extends Controller
     // 投稿個別ページ
     public function showId(Request $request,int $id)
     {
-        $post = PostImage::find($id);
-        // $post = PostImage::with(['favorite'])
-        //                 ->where('id',$id)
-        //                 ->get();
+       
+        // $post = PostImage::find($id);
+        $post = PostImage::with(['favorite'])
+                        ->where('id',$id)
+                        ->get();
                       
         // dd($id);
         return response()->json($post);
