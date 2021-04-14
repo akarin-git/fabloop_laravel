@@ -29,7 +29,6 @@ Route::get('/user/{userId}','Api\UserController@usershow')->name('api.user.show'
 
 
 
-
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -12,7 +12,10 @@ class UserController extends Controller
     {
         $myId = $request->user()->id;
         
-        $myInfo = User::find($myId);
+        // $myInfo = User::find($myId);
+        $myInfo = User::with(['favorite','post_image'])
+                            ->where('id',$myId)
+                            ->get();
       
         return response()->json([$myInfo]);
     }
@@ -22,7 +25,7 @@ class UserController extends Controller
     {
         // dd($userId);
         //  $userInfo = User::find($userId);
-        $userInfo = User::with(['favorite'])
+        $userInfo = User::with(['favorite','post_image'])
                         ->where('id',$userId)
                         ->get();
        

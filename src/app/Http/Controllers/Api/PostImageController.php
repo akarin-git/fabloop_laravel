@@ -87,7 +87,7 @@ class PostImageController extends Controller
         // $myId = $request->user()->id;
         // $showImage = PostImage::all();
         
-        $showImage = PostImage::with(['favorite'])
+        $showImage = PostImage::with(['favorite','user'])
                                 ->get();
         // $showImage = PostImage::all();
         
@@ -105,7 +105,7 @@ class PostImageController extends Controller
     {
        
         // $post = PostImage::find($id);
-        $post = PostImage::with(['favorite'])
+        $post = PostImage::with(['favorite','user'])
                         ->where('id',$id)
                         ->get();
                       
@@ -120,7 +120,7 @@ class PostImageController extends Controller
     {
 
         // dd($category);
-        $category_post = PostImage::with(['favorite'])
+        $category_post = PostImage::with(['favorite','user'])
                                     ->where('category',$category)
                                     ->get();
         // dd($category_post);
@@ -135,7 +135,10 @@ class PostImageController extends Controller
     public function showtestId(Request $request,int $id)
     {
 
-        $post = PostImage::find($id);
+        // $post = PostImage::find($id);
+        $post = PostImage::with(['favorite','user'])
+                            ->where('id',$id)
+                            ->get();
         // dd($id);
         return response()->json($post);
         // return new \App\Http\Resources\PostImageCollection($showImage);
