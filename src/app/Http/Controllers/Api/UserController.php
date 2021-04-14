@@ -8,6 +8,26 @@ use App\Eloquents\User;
 
 class UserController extends Controller
 {
+
+    // user一覧 
+    public function userall(Request $request)
+    {
+        dd($request);
+        // $myId = $request->user()->id;
+        // $showImage = PostImage::all();
+        
+        // $userall = User::all();
+        $userall = User::with(['favorite','post_image'])
+                                ->get();
+        // $showImage = PostImage::all();
+        
+        dd($userall);
+          
+        return response()->json($userall);
+        // return new \App\Http\Resources\PostImageCollection($showImage);
+
+    }
+
     public function me(Request $request)
     {
         $myId = $request->user()->id;
@@ -23,8 +43,7 @@ class UserController extends Controller
 
    public function usershow(Request $request,int $userId)
     {
-        // dd($userId);
-        //  $userInfo = User::find($userId);
+       
         $userInfo = User::with(['favorite','post_image'])
                         ->where('id',$userId)
                         ->get();

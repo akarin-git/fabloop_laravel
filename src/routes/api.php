@@ -24,6 +24,8 @@ Route::get('/image/show/{id}','Api\PostImageController@showId')->name('api.post_
 // カテゴリ別
 Route::get('/image/{category}','Api\PostImageController@showCategory')->name('api.post_image.showCategory');
 
+// user一覧
+Route::get('/userall','Api\UserController@userall')->name('api.user.all');
 // userpage情報
 Route::get('/user/{userId}','Api\UserController@usershow')->name('api.user.show');
 
