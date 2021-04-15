@@ -14,12 +14,12 @@ class Favorite extends Model
 
     public function post()
     {
-        return $this->belongsTo(PostImage::class);
+        return $this->hasOne(PostImage::class);
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }
 
     
