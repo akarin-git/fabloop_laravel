@@ -36,7 +36,7 @@ class FavoriteController extends Controller
         $myId = $request->user()->id;
         $post_id = $request->input('post_id');
         
-        Favorite::where('user_id',$myId)->delete();
+        // Favorite::where('user_id',$myId)->delete();
 
         $myfavorite = new Favorite();
         $myfavorite->fill([
