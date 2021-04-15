@@ -53,9 +53,9 @@ Route::middleware('auth:api')->group(function () {
     // 投稿
     Route::post('/image','Api\PostImageController@store')->name('api.post_image.upload');
     // お気に入り
-    Route::post('/image/{id}/favorite','Api\FavoriteController@store')->name('api.favorite.store');
+    Route::post('/image/favorite','Api\FavoriteController@store')->name('api.favorite.store');
     // お気に入り削除
-    Route::post('/image/{id}/unfavorite','Api\FavoriteController@delete')->name('api.favorite.delete');
+    Route::post('/image/unfavorite','Api\FavoriteController@delete')->name('api.favorite.delete');
     // お気に入り一覧
     Route::get('/myfavorite','Api\FavoriteController@myfavorite')->name('api.favorite.myfavorite');
     // ログアウト
