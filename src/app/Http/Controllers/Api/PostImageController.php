@@ -15,7 +15,7 @@ class PostImageController extends Controller
     // public function store(PostImage $request)
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $newImage = \DB::transaction(function() use ($request){
             // dd($request->user());
           

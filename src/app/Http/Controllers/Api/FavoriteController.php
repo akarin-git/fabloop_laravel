@@ -32,7 +32,7 @@ class FavoriteController extends Controller
     // お気に入り登録
     public function store(Request $request)
     {
-        dd($request);
+        // dd($request);
         $myId = $request->user()->id;
         $post_id = $request->input('post_id');
         
