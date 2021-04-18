@@ -9,11 +9,12 @@ class PostImage extends Model
     protected $table = 'post_images';
 
     protected $fillable = [
-        'image_path','category','title','descriptionA','descriptionB','descriptionC','web_page','user_id','public_id',
+        'category','title','subtitle','web_page','user_id','public_id','image_path',
+        'comment','hour','difficult','step',
+        'descriptionA','descriptionB','descriptionC','descriptionD','descriptionE',
         'materialA','materialB','materialC','materialD',
         'materialE','materialF','materialG',
-        'amountA','amountB','amountC','amountD',
-        'amountE','amountF','amountG',
+        'maAnum','maBnum','maCnum','maDnum','maEnum','maFnum','maGnum',
         'goodsA','goodsB','goodsC','goodsD','goodsE',
 
     ];
