@@ -37,7 +37,7 @@ class UserController extends Controller
                             ->where('id',$myId)
                             ->get();
       
-        return response()->json([$myInfo]);
+        return response()->json($myInfo);
     }
 
 
@@ -49,6 +49,6 @@ class UserController extends Controller
                         ->get();
        
         
-        return response()->json([$userInfo]);
+        return response()->json($userInfo);
     }
 }
