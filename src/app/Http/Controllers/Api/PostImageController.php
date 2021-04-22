@@ -39,7 +39,6 @@ class PostImageController extends Controller
                 'title' => $request->input('title'),
                 'subtitle' => $request->input('subtitle'),
                 'web_page' => $request->input('web_page'),
-                'comment' => $request->input('comment'),
                 'difficult' => $request->input('difficult'),
                 'step' => $request->input('step'),
                 'hour' => $request->input('hour'),
@@ -70,12 +69,9 @@ class PostImageController extends Controller
                 'goodsD' => $request->input('goodsD'),
                 'goodsE' => $request->input('goodsE'),
             ]);
-            // dd($Upload);
             return $Upload;
             });
-            // とりあえず、そのままレスポンスします（後ほど整形します）
             return response()->json($newImage); 
-            // return new \App\Http\Resources\PostImageResource($newImage);
     }
    
     // // 自分の投稿一覧 myPage
@@ -161,4 +157,7 @@ class PostImageController extends Controller
         // return new \App\Http\Resources\PostImageCollection($showImage);
 
     }
+
+
+
 }

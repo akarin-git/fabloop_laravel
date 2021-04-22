@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Eloquents\User;
+use App\Eloquents\PostImage;
+use Illuminate\Support\Facades\DB;
+
+
 
 class UserController extends Controller
 {
@@ -32,11 +36,23 @@ class UserController extends Controller
     {
         $myId = $request->user()->id;
         
+        $myFabPostId = DB::table('favorites')
+                        ->where('user_id',$myId)
+                        ->value('post_id');
+        //    $myfavorite = DB::table('post_images')->where('id',$myId)->get();
+        
+        // $fab = $myInfo->where('favorite')
+        // ->where('post_image','id')
+        // ->get();
+        $fabpost = DB::table('post_images')
+                    ->where('id',$myFabPostId)
+                    ->get();
+        
+        $myInfo = User::with(['post_image','favorite'])
+                    ->where('id',$myId)
+                    ->get();
+        // dd($myInfo);
         // $myInfo = User::find($myId);
-        $myInfo = User::with(['favorite','post_image'])
-                            ->where('id',$myId)
-                            ->get();
-      
         return response()->json($myInfo);
     }
 

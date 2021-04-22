@@ -10,7 +10,7 @@ class PostImage extends Model
 
     protected $fillable = [
         'category','title','subtitle','web_page','user_id','public_id','image_path',
-        'comment','hour','difficult','step',
+        'hour','difficult','step',
         'descriptionA','descriptionB','descriptionC','descriptionD','descriptionE',
         'materialA','materialB','materialC','materialD',
         'materialE','materialF','materialG',

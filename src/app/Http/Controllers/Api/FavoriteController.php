@@ -32,19 +32,19 @@ class FavoriteController extends Controller
     // お気に入り登録
     public function store(Request $request)
     {
-        // dd($request);
         $myId = $request->user()->id;
         $post_id = $request->input('post_id');
         
         // Favorite::where('user_id',$myId)->delete();
-
+        
         $myfavorite = new Favorite();
         $myfavorite->fill([
             'user_id' => $myId,
             'post_id' => $post_id,
-        ]);
+            ]);
         $myfavorite->save();
-
+            
+            // dd($myfavorite);
         return response()->json($myfavorite); 
     }
 

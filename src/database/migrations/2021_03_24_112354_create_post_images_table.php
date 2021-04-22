@@ -19,7 +19,6 @@ class CreatePostImagesTable extends Migration
             $table->string('category',200)->collate('utf8mb4_general_ci')->comment('カテゴリー');
             $table->string('title',200)->collate('utf8mb4_general_ci')->comment('タイトル');
             $table->string('subtitle',200)->collate('utf8mb4_general_ci')->comment('サブタイトル');
-            $table->string('comment',100)->collate('utf8mb4_general_ci')->comment('コメント');
             $table->string('difficult',100)->collate('utf8mb4_general_ci')->comment('難しさ');
             $table->string('step',100)->comment('ステップ');
             $table->string('hour',100)->comment('製作時間');
